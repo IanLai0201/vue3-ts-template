@@ -4,6 +4,7 @@
   "compilerOptions": {
     "ignoreDeprecations": "5.0",
     "composite": true,
+    "moduleResolution": "bundler",
     "types": ["node"]
   }
 }

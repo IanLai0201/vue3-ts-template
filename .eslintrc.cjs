@@ -1,33 +1,42 @@
 /* eslint-env node */
 require('@rushstack/eslint-patch/modern-module-resolution');
 
-// Rules: https://eslint.org/docs/latest/use/configure/rules
+/**
+ * Rules: https://eslint.org/docs/latest/use/configure/rules
+ */
 module.exports = {
   root: true,
   extends: [
-    'plugin:vue/vue3-essential',
     'eslint:recommended',
-    '@vue/eslint-config-typescript',
-    '@vue/eslint-config-prettier/skip-formatting',
+
+    './.eslintrc.vue.cjs',
+    './.eslintrc.import-plugin.cjs',
+    './.eslintrc-auto-import.json',
   ],
-  plugins: ['import'],
   rules: {
     camelcase: 'warn',
 
-    'import/order': [
+    // https://typescript-eslint.io/rules/no-unused-vars/
+    '@typescript-eslint/no-unused-vars': [
       'warn',
       {
-        pathGroups: [
-          {
-            pattern: '@/**',
-            group: 'external',
-            position: 'after',
-          },
-        ],
-        alphabetize: {
-          order: 'asc',
-        },
-        'newlines-between': 'always',
+        argsIgnorePattern: '^_',
+      },
+    ],
+
+    // https://typescript-eslint.io/rules/naming-convention/
+    '@typescript-eslint/naming-convention': [
+      'error',
+      { selector: 'enumMember', format: ['PascalCase'] },
+    ],
+
+    // https://typescript-eslint.io/rules/lines-between-class-members/
+    '@typescript-eslint/lines-between-class-members': [
+      'warn',
+      'always',
+      {
+        exceptAfterOverload: true,
+        exceptAfterSingleLine: false,
       },
     ],
 
@@ -48,46 +57,6 @@ module.exports = {
     ],
   },
   overrides: [
-    {
-      files: ['*.vue'],
-      rules: {
-        // https://eslint.vuejs.org/rules/
-        'vue/block-lang': [
-          'error',
-          {
-            script: {
-              lang: 'ts',
-            },
-          },
-        ],
-        'vue/define-macros-order': [
-          'error',
-          {
-            order: ['defineProps', 'defineEmits'],
-          },
-        ],
-        'vue/html-self-closing': [
-          'error',
-          {
-            html: {
-              void: 'always',
-              normal: 'always',
-              component: 'never',
-            },
-            svg: 'always',
-            math: 'always',
-          },
-        ],
-        'vue/html-closing-bracket-newline': [
-          'error',
-          {
-            singleline: 'never',
-            multiline: 'always',
-          },
-        ],
-      },
-    },
-
     {
       files: ['cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}'],
       extends: ['plugin:cypress/recommended'],
