@@ -7,3 +7,5 @@
 2. 檔名使用 `Kebab Case` 規則，單字用 `-` 隔開。
 
 3. 定義 function 名稱，`檔名 Camel Case`。
+
+4. 使用 [`Named Export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#using_named_exports)。

@@ -10,7 +10,7 @@
 
 4. Enum Key 命名使用 `Pascal Case`。
 
-5. 使用 [`Named Export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)。
+5. 使用 [`Named Export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#using_named_exports)。
 
 ## 範例
 

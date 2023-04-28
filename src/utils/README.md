@@ -12,7 +12,7 @@
 
 5. 該 Util 自己使用的 type，直接定義在檔案內，並 `Named Export`。
 
-6. 使用 [`Named Export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)。
+6. 使用 [`Named Export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#using_named_exports)。
 
 ## 範例
 

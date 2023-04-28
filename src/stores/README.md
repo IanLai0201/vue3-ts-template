@@ -8,7 +8,7 @@
 
 3. 定義 Store 名稱，`use${檔名 Pascal Case}`。
 
-4. 使用 [`Named Export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)。
+4. 使用 [`Named Export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export#using_named_exports)。
 
 5. Setup Stores 的 export 參數中，變數使用 [`readonlyRef`](https://vuejs.org/api/reactivity-core.html#readonly) 封裝，不提供外部直接修改，export 相關 function 提供外部修改參數。
 

@@ -17,8 +17,7 @@ let subscribers: (() => void)[] = [];
  * Http code 401 error 處理
  *
  * ----
- * #### throws Error
- * - reject `AuthSessionError` error
+ * Refresh 錯誤時自動登出
  *
  * @param error
  * @returns
@@ -29,22 +28,19 @@ async function handleError401(error: AxiosError) {
   if (!isRefreshing) {
     isRefreshing = true;
 
-    refreshTokens()
-      .then(() => {
-        // refresh end, trigger pending requests
-        subscribers.forEach((cb) => cb());
-      })
-      .catch((e) => {
-        console.error(e);
+    try {
+      await refreshTokens();
 
-        if (e instanceof AuthSessionError) {
-          // TODO 登出
-        }
-      })
-      .finally(() => {
-        isRefreshing = false;
-        subscribers = [];
-      });
+      // refresh end, trigger pending requests
+      subscribers.forEach((cb) => cb());
+
+      return instance(config);
+    } catch (e) {
+      throw new AuthSessionError(e);
+    } finally {
+      isRefreshing = false;
+      subscribers = [];
+    }
   }
 
   return new Promise((resolve) => {
@@ -59,12 +55,8 @@ async function handleError401(error: AxiosError) {
  *
  * @returns
  */
-async function refreshTokens() {
-  try {
-    return await Promise.resolve();
-  } catch (e) {
-    throw new AuthSessionError(e);
-  }
+function refreshTokens() {
+  return Promise.resolve();
 }
 
 /**

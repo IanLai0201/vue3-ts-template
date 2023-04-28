@@ -6,6 +6,7 @@ import { useInvokeApi } from '@/composables/use-invoke-api';
 import { SortOrder } from '@/enums/sort-order';
 import { StorageKey } from '@/enums/storage-key';
 import { ApiExample } from '@/services/api/example';
+import { delegateApi } from '@/services/utils/delegate-api';
 import { formatMessage } from '@/utils/format-message';
 import { sortBy } from '@/utils/sort-by';
 
@@ -14,24 +15,24 @@ defineOptions({
 });
 
 // const { invokeApi, cancelAll } = useInvokeApi();
-const { delegateApi, cancelAll } = useDelegateApi();
-const { response, execute, cancel } = useInvokeApi(ApiExample, 'get', {
-  onSuccess: (r) => {
-    console.log('result >>>', r);
-  },
-});
+// const { delegateApi, cancelAll } = useDelegateApi();
+// const { response, execute, cancel } = useInvokeApi(ApiExample, 'get', {
+//   onSuccess: (r) => {
+//     console.log('result >>>', r);
+//   },
+// });
 
 // const { execute: exec1 } = invokeApi(apiExample, 'GET');
-const { execute: exec2 } = delegateApi(ApiExample, 'get');
+// const { execute: exec2 } = delegateApi(ApiExample, 'get');
 // const { execute: exec3 } = delegateApi(ApiExample, 'get');
 
 const executeApi = async () => {
   try {
     // const { execute: exec2 } = delegateApi(ApiExample, 'get');
-    const r1 = await exec2({ test: [123, 111] });
+    // const r1 = await exec2({ test: [123, 111] });
 
     // const [r1, r2] = await Promise.all([exec1({ test: 123 }), exec2({ test: 111 })]);
-    // const r1 = await invokeApi(apiExample, 'GET').execute({ test: 123 });
+    const r1 = await delegateApi(ApiExample, 'get').execute({ test: 123 });
 
     // const r2 = await exec2({ test: 111 });
 
@@ -73,8 +74,8 @@ onMounted(() => {
   <div class="home">
     <h1>This is an home page</h1>
     <button @click="executeApi()">Execute</button>
-    <button @click="cancel()">Cancel</button>
-    {{ response?.['data'] }}
+    <!-- <button @click="cancel()">Cancel</button>
+    {{ response?.['data'] }} -->
   </div>
 </template>
 

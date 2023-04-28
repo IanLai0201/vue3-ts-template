@@ -1,5 +1,7 @@
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
+import { AuthSessionError } from '@/instances/auth-session-error';
+
 import type { BaseApi } from '../api/_abstract/base-api';
 import defaultInstance from '../instances/default-instance';
 import type { DoApiDelete } from '../interfaces/do-api-delete';
@@ -190,6 +192,8 @@ export function delegateApi<
    * @returns
    */
   async function execute(...args: any[]) {
+    console.log(`Delegate API: ${ctor.name}, method: ${String(method)}`);
+
     try {
       // abort last request before current request
       cancel();
@@ -199,6 +203,10 @@ export function delegateApi<
       return await fn(..._args);
     } catch (e) {
       console.error(e);
+
+      if (e instanceof AuthSessionError) {
+        // TODO 登出
+      }
 
       throw e;
     }
