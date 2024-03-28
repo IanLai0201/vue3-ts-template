@@ -1,0 +1,4 @@
+{
+  "ignorePaths": ["pnpm-lock.yaml", "auto-imports.d.ts", "components.d.ts"],
+  "words": ["pinia", "vueuse"]
+}

@@ -1,0 +1,129 @@
+{
+  "vue3 script setup typescript template": {
+    "scope": "vue",
+    "prefix": "!vue define",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "defineOptions({",
+      "  name: '${TM_FILENAME_BASE/^([^-]*)-([^.]*).*/${1:/pascalcase}${2:/pascalcase}/}',",
+      "})",
+      "",
+      "const props = defineProps<{$1}>()",
+      "const emit = defineEmits<{$2}>()",
+      "",
+      "// lifecycle hooks declaration",
+      "onMounted(() => {",
+      "",
+      "});",
+      "",
+      "defineExpose({",
+      "",
+      "})",
+      "</script>",
+      "",
+      "<template>",
+      "",
+      "</template>",
+      "",
+      "<style lang=\"scss\" scoped>",
+      "",
+      "</style>",
+    ],
+  },
+
+  "vue3-computed": {
+    "scope": "typescript,vue",
+    "prefix": "com",
+    "body": ["computed(() => { $1 })"],
+  },
+
+  "vue3-watchEffect": {
+    "scope": "typescript,vue",
+    "prefix": "watchE",
+    "body": ["watchEffect(() => {", "  $1", "})"],
+  },
+
+  "vue3-onMounted": {
+    "scope": "typescript,vue",
+    "prefix": "moun",
+    "body": ["onMounted(() => {", "  $1", "})"],
+  },
+
+  "vue3-onBeforeUnmount": {
+    "scope": "typescript,vue",
+    "prefix": "beumoun",
+    "body": ["onBeforeUnmount(() => {", "  $1", "})"],
+  },
+
+  "vue3 pinia store template": {
+    "scope": "typescript",
+    "prefix": "!store define",
+    "body": [
+      "import { defineStore } from 'pinia'",
+      "",
+      "export const use${TM_FILENAME_BASE/([^.]+).*/${1:/pascalcase}/g}Store = defineStore('${TM_FILENAME_BASE}', () => {",
+      "  $1",
+      "",
+      "  return {}",
+      "})",
+    ],
+  },
+
+  "vue3 composables template": {
+    "scope": "typescript",
+    "prefix": "!composables define",
+    "body": ["export function ${TM_FILENAME_BASE/([^.]+).*/${1:/camelcase}/g}($1) {", "  $2", "}"],
+  },
+
+  "vue3 directive template": {
+    "scope": "typescript",
+    "prefix": "!directive define",
+    "body": [
+      "import type { Directive } from 'vue';",
+      "",
+      "export const v${TM_FILENAME_BASE/([^.]+).*/${1:/pascalcase}/g}: Directive<HTMLElement> = {",
+      "  $1",
+      "}",
+    ],
+  },
+
+  "enum template": {
+    "scope": "typescript",
+    "prefix": "!enum define",
+    "body": ["export enum ${TM_FILENAME_BASE/([^.]+).*/${1:/pascalcase}/g} {", "  $1", "}", ""],
+  },
+
+  "util template": {
+    "scope": "typescript",
+    "prefix": "!util define",
+    "body": ["export function ${TM_FILENAME_BASE/([^.]+).*/${1:/camelcase}/g}($1) {", "  $2", "}"],
+  },
+
+  "util unit test template": {
+    "scope": "typescript",
+    "prefix": "!test util define",
+    "body": [
+      "import { describe, it, expect } from 'vitest';",
+      "",
+      "import { ${TM_FILENAME_BASE/([^.]+).*/${1:/camelcase}/g} } from './${TM_FILENAME_BASE/^([^.]+).*/$1/}';",
+      "",
+      "describe('${TM_FILENAME_BASE/([^.]+).*/${1:/camelcase}/g}', () => {",
+      "  it('$1', () => {",
+      "",
+      "  });",
+      "})",
+    ],
+  },
+
+  "model interface template": {
+    "scope": "typescript",
+    "prefix": "!model interface define",
+    "body": ["export interface ${TM_FILENAME_BASE/([^.]+).*/${1:/pascalcase}/g} {", "  $1", "}"],
+  },
+
+  "model type template": {
+    "scope": "typescript",
+    "prefix": "!model type define",
+    "body": ["export type ${TM_FILENAME_BASE/([^.]+).*/${1:/pascalcase}/g} = $1"],
+  },
+}

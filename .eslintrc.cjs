@@ -9,9 +9,10 @@ module.exports = {
   extends: [
     'eslint:recommended',
 
-    './.eslintrc.vue.cjs',
-    './.eslintrc.import-plugin.cjs',
-    './.eslintrc-auto-import.json',
+    './eslint-plugins/.eslintrc-ts.cjs',
+    './eslint-plugins/.eslintrc.vue.cjs',
+    './eslint-plugins/.eslintrc.import-plugin.cjs',
+    './eslint-plugins/.eslintrc-auto-import.json',
   ],
   rules: {
     camelcase: 'warn',
@@ -22,12 +23,6 @@ module.exports = {
       {
         argsIgnorePattern: '^_',
       },
-    ],
-
-    // https://typescript-eslint.io/rules/naming-convention/
-    '@typescript-eslint/naming-convention': [
-      'error',
-      { selector: 'enumMember', format: ['PascalCase'] },
     ],
 
     // https://typescript-eslint.io/rules/lines-between-class-members/
@@ -65,4 +60,45 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
+  // for in lint-staged
+  ignorePatterns: [
+    '*.min.*',
+    '*.d.ts',
+    'dist',
+    'LICENSE*',
+    'output',
+    'out',
+    'coverage',
+    'node_modules',
+    'public',
+    'temp',
+    'src/assets',
+    'package-lock.json',
+    'pnpm-lock.yaml',
+    'yarn.lock',
+    '*.css',
+    '*.scss',
+    '*.png',
+    '*.svg',
+    '*.ico',
+    '*.toml',
+    '*.patch',
+    '*.txt',
+    '*.crt',
+    '*.key',
+    '*.json',
+    '*.jsonc',
+    '*.json5',
+    '*.yml',
+    '*.yaml',
+    'Dockerfile',
+    'Jenkinsfile*',
+    '.eslintrc-auto-import.json',
+    'auto-imports.d.ts',
+    'components.d.ts',
+    'nginx/',
+    'environments/',
+    'index.html',
+    'README.md',
+  ],
 };

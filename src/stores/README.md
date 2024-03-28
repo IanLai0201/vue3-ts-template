@@ -1,8 +1,8 @@
-# [Store (Pinia)](https://pinia.vuejs.org/core-concepts/#defining-a-store)
+# [Store (Pinia)](https://pinia.vuejs.org/core-concepts/#defining-a-store) 🍍
 
 ## 建立 Store
 
-1. ts 檔中輸入 `!store define`，使用 snippets 自動建立 Setup Stores 撰寫模板。
+1. ts 檔中輸入 `!store define`，使用 [snippets](../../.vscode/global.code-snippets) 自動建立 Setup Stores 撰寫模板。
 
 2. 檔名使用 `Kebab Case` 規則，單字用 `-` 隔開，例如 loading.ts、todo-list.ts。
 

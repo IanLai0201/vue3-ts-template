@@ -5,6 +5,7 @@
     "esbenp.prettier-vscode",
     "Vue.volar",
     "stylelint.vscode-stylelint",
-    "Vue.vscode-typescript-vue-plugin"
+    "Vue.vscode-typescript-vue-plugin",
+    "streetsidesoftware.code-spell-checker"
   ]
 }

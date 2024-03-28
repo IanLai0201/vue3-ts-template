@@ -2,7 +2,7 @@
 
 ## 建立
 
-1. ts 檔中輸入 `!composables define`，使用 snippets 自動建立撰寫模板。
+1. ts 檔中輸入 `!composables define`，使用 [snippets](../../.vscode/global.code-snippets) 自動建立撰寫模板。
 
 2. 檔名使用 `Kebab Case` 規則，單字用 `-` 隔開。
 
